@@ -1,0 +1,32 @@
+<div class="container">
+  <button type="button" class="btn btn-primary my-4" (click)="addUser()">Create User</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Action</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of (users$ | async)?.userList; track user.id; let i = $index) {
+      <tr>
+        <th scope="row">
+          <a href="javascript: void(0)" (click)="editUser(user)">Edit</a>
+          <a href="javascript: void(0)" class="mx-2" (click)="deleteUser(user.id)">Delete</a>
+        </th>
+        <td>
+          {{ user.name }}
+        </td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+      </tr>
+      } @empty {
+      <tr>
+        <td colspan="4" class="text-center">No users found.</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

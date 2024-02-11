@@ -1,0 +1,40 @@
+<div class="container">
+  <h2 class="my-2 text-primary">{{ id ? 'Edit' : 'Create' }} User</h2>
+  <form [formGroup]="userForm" (ngSubmit)="submit()">
+    <div class="form-group mt-2">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" aria-describedby="Name" placeholder="Enter name"
+        formControlName="name" autocomplete="off"
+        [ngClass]="{'is-valid': frm.name.touched && frm.name.valid, 'is-invalid': frm.name.touched && frm.name.invalid}">
+      @if (frm.name.touched && frm.name.invalid) {
+      <div class="invalid-feedback"> Please enter name </div>
+      }
+    </div>
+    <div class="form-group mt-2">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="Email" placeholder="Enter email"
+        formControlName="email" autocomplete="off"
+        [ngClass]="{'is-valid': frm.email.touched && frm.email.valid, 'is-invalid': frm.email.touched && frm.email.invalid}">
+      @if (frm.email.touched && frm.email.errors?.['required']) {
+      <div class="invalid-feedback"> Please enter email </div>
+      }
+      @if (frm.email.touched && frm.email.errors?.['email']) {
+      <div class="invalid-feedback"> Please enter valid email </div>
+      }
+    </div>
+    <div class="form-group mt-2">
+      <label for="phone">Phone</label>
+      <input type="text" class="form-control" id="phone" aria-describedby="phone" placeholder="Enter phone"
+        formControlName="phone" autocomplete="off"
+        [ngClass]="{'is-valid': frm.phone.touched && frm.phone.valid, 'is-invalid': frm.phone.touched && frm.phone.invalid}">
+      @if (frm.phone.touched && frm.phone.errors?.['required']) {
+      <div class="invalid-feedback"> Please enter phone </div>
+      }
+      @if (frm.phone.touched && frm.phone.errors?.['pattern']) {
+      <div class="invalid-feedback"> Please enter valid phone </div>
+      }
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">{{ id ? 'Update' : 'Submit' }}</button>
+    <button type="button" class="btn btn-secondary mt-2 mx-2" (click)="navBack()">Cancel</button>
+  </form>
+</div>
