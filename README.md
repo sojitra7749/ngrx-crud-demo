@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
 
 # Demo
-![](video.gif)
+[screen-capture.webm](https://github.com/sojitra7749/ngrx-crud-demo/assets/47114142/759dbe75-9e19-45ff-87b3-69ff7ea5790e)
 
 ## Development server
 
